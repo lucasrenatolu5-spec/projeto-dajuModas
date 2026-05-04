@@ -1,0 +1,232 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #c49a8a;
+    --color-primary-light: #dbb5a8;
+    --color-primary-dark: #a07060;
+    --color-accent: #e8b4b8;
+    --color-accent-dark: #d4858b;
+    --color-bg: #fdf8f6;
+    --color-bg-alt: #f9f0ed;
+    --color-text: #3d2b26;
+    --color-text-light: #7a5c55;
+    --color-text-muted: #b08080;
+    --color-white: #ffffff;
+    --color-border: #edd5c8;
+
+    --shadow-soft: 0 4px 30px rgba(196, 154, 138, 0.15);
+    --shadow-medium: 0 8px 40px rgba(196, 154, 138, 0.2);
+    --shadow-strong: 0 16px 60px rgba(196, 154, 138, 0.3);
+
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #e8b4b8;
+    color: var(--color-text);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-alt);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-dark);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-8 py-3.5 bg-[#c49a8a] text-white font-body font-medium rounded-full 
+           transition-all duration-300 hover:bg-[#a07060] hover:shadow-lg hover:-translate-y-0.5 
+           active:translate-y-0 cursor-pointer border-none outline-none;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-8 py-3.5 bg-transparent text-[#c49a8a] font-body font-medium 
+           rounded-full border-2 border-[#c49a8a] transition-all duration-300 
+           hover:bg-[#c49a8a] hover:text-white hover:shadow-lg hover:-translate-y-0.5 
+           active:translate-y-0 cursor-pointer;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center gap-2 px-8 py-3.5 bg-[#25D366] text-white font-body font-medium 
+           rounded-full transition-all duration-300 hover:bg-[#1ebe57] hover:shadow-lg hover:-translate-y-0.5 
+           active:translate-y-0 cursor-pointer;
+    letter-spacing: 0.02em;
+  }
+
+  .section-title {
+    @apply font-display text-4xl md:text-5xl text-[#3d2b26] leading-tight;
+    font-weight: 400;
+  }
+
+  .section-subtitle {
+    @apply font-body text-[#7a5c55] text-lg leading-relaxed;
+    font-weight: 300;
+  }
+
+  .card-product {
+    @apply bg-white rounded-3xl overflow-hidden shadow-soft transition-all duration-500 
+           hover:-translate-y-2 hover:shadow-medium cursor-pointer;
+  }
+
+  .card-product:hover {
+    box-shadow: 0 8px 40px rgba(196, 154, 138, 0.2);
+  }
+
+  .badge {
+    @apply absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-body font-medium;
+  }
+
+  .badge-new {
+    @apply badge bg-[#e8b4b8] text-[#3d2b26];
+  }
+
+  .badge-sale {
+    @apply badge bg-[#c49a8a] text-white;
+  }
+
+  .badge-bestseller {
+    @apply badge bg-[#3d2b26] text-white;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-2xl border border-[#edd5c8] bg-white text-[#3d2b26] 
+           font-body text-sm transition-all duration-200 outline-none
+           focus:border-[#c49a8a] focus:ring-2 focus:ring-[#c49a8a]/20
+           placeholder:text-[#b08080];
+  }
+
+  .nav-link {
+    @apply font-body text-sm font-medium text-[#7a5c55] transition-all duration-200 
+           hover:text-[#c49a8a] relative cursor-pointer;
+    letter-spacing: 0.03em;
+  }
+
+  .nav-link.active {
+    @apply text-[#c49a8a];
+  }
+
+  .section-divider {
+    @apply w-16 h-0.5 bg-gradient-to-r from-[#e8b4b8] to-[#c49a8a] rounded-full mx-auto my-4;
+  }
+
+  .petal-decoration {
+    @apply absolute pointer-events-none opacity-20 select-none;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #c49a8a 0%, #e8b4b8 50%, #d4858b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .bg-glass-dark {
+    background: rgba(61, 43, 38, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .animate-delay-100 { animation-delay: 0.1s; }
+  .animate-delay-200 { animation-delay: 0.2s; }
+  .animate-delay-300 { animation-delay: 0.3s; }
+  .animate-delay-400 { animation-delay: 0.4s; }
+  .animate-delay-500 { animation-delay: 0.5s; }
+  .animate-delay-600 { animation-delay: 0.6s; }
+  .animate-delay-700 { animation-delay: 0.7s; }
+  .animate-delay-800 { animation-delay: 0.8s; }
+}
+
+/* Petal floating animations */
+.petal-1 { animation: petalFall 10s ease-in infinite; animation-delay: 0s; left: 10%; }
+.petal-2 { animation: petalFall 12s ease-in infinite; animation-delay: 2s; left: 25%; }
+.petal-3 { animation: petalFall 9s ease-in infinite; animation-delay: 4s; left: 50%; }
+.petal-4 { animation: petalFall 14s ease-in infinite; animation-delay: 1s; left: 70%; }
+.petal-5 { animation: petalFall 11s ease-in infinite; animation-delay: 3s; left: 85%; }
+
+@keyframes petalFall {
+  0% { transform: translateY(-20px) rotate(0deg) scale(1); opacity: 0.6; }
+  50% { transform: translateY(50vh) rotate(180deg) scale(0.8); opacity: 0.3; }
+  100% { transform: translateY(110vh) rotate(360deg) scale(0.5); opacity: 0; }
+}
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #f0e4e0 25%, #f7ede9 50%, #f0e4e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Smooth reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Product image hover zoom */
+.img-zoom {
+  overflow: hidden;
+}
+
+.img-zoom img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.img-zoom:hover img {
+  transform: scale(1.08);
+}
